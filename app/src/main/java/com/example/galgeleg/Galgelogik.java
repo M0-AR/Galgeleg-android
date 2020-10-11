@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Galgelogik {
     /** AHT afprøvning er muligeOrd synlig på pakkeniveau */
-    ArrayList<String> muligeOrd = new ArrayList<String>();
+    public ArrayList<String> muligeOrd = new ArrayList<String>();
     private String ordet;
     private ArrayList<String> brugteBogstaver = new ArrayList<String>();
     private String synligtOrd;
@@ -30,7 +30,7 @@ public class Galgelogik {
         muligeOrd.add("skovsnegl");
         muligeOrd.add("solsort");
         muligeOrd.add("nitten");
-        nulstil();
+        startNytSpil();
     }
 
 
@@ -67,7 +67,7 @@ public class Galgelogik {
     }
 
 
-    public void nulstil() {
+    public void startNytSpil() {
         brugteBogstaver.clear();
         antalForkerteBogstaver = 0;
         spilletErVundet = false;
@@ -165,7 +165,7 @@ public class Galgelogik {
         muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
         System.out.println("muligeOrd = " + muligeOrd);
-        nulstil();
+        startNytSpil();
     }
 
 
@@ -198,6 +198,6 @@ public class Galgelogik {
         }
 
         System.out.println("muligeOrd = " + muligeOrd);
-        nulstil();
+        startNytSpil();
     }
 }
