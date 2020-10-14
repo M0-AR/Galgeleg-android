@@ -19,6 +19,11 @@ public class Galgelogik {
     private boolean sidsteBogstavVarKorrekt;
     private boolean spilletErVundet;
     private boolean spilletErTabt;
+    private int antalForsøg;
+
+    public int getAntalForsøg() {
+        return antalForsøg;
+    }
 
     public Galgelogik() {
         muligeOrd.add("bil");
@@ -93,6 +98,7 @@ public class Galgelogik {
     }
 
     public void gætBogstav(String bogstav) {
+        antalForsøg++;
         if (bogstav.length() != 1) return;
         System.out.println("Der gættes på bogstavet: " + bogstav);
         if (brugteBogstaver.contains(bogstav)) return;
