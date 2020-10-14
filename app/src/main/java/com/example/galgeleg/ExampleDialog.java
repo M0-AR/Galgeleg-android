@@ -10,9 +10,13 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 public class ExampleDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        Bundle bundle = getArguments();
+        String s = bundle.getString("TEXT","");
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Galgeleg")
-                .setMessage("This is a Dialog")
+                .setMessage(s)
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

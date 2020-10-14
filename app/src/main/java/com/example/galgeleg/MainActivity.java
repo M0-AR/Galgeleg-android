@@ -1,17 +1,12 @@
 package com.example.galgeleg;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.fragment.app.DialogFragment;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     GridView mGridView;
     ImageView mImageView;
     Dialog mDialog;
-
+    String mDialogDescription;
     Galgelogik spil = new Galgelogik();
 
     final String[] gridViewValues = {
@@ -58,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     int imageTracking = -1;
 
-  /*  @Override
+    @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -91,83 +86,30 @@ public class MainActivity extends AppCompatActivity {
                             ((TextView) view).getText() + " is wrong", Toast.LENGTH_SHORT).show();
                 }
 
-                String textIWantToSee;
+
 
                 if (spil.erSpilletVundet()) {
-                    //openDialog();
-                   // simpleDialog("Antal forsøg: " + spil.getAntalForsøg());
-
-*//*
-                    textIWantToSee = "Antal forsøg: " + spil.getAntalForsøg();
-                    simpleDialogFragment dialogFragment = new simpleDialogFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("TEXT",textIWantToSee);
-                    dialogFragment.setArguments(bundle);
-                    dialogFragment.show((MainActivity.this).getSupportFragmentManager(),"Image Dialog");
-*//*
+                    mDialogDescription = "Antal forsøg: " + spil.getAntalForsøg();
+                    openDialog(mDialogDescription);
                 }
 
                 if (spil.erSpilletTabt()) {
-*//*
-                    textIWantToSee = "Du har tabt! Ordet var: " + spil.getOrdet();
-                    simpleDialogFragment dialogFragment = new simpleDialogFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("TEXT",textIWantToSee);
-                    dialogFragment.setArguments(bundle);
-                    dialogFragment.show((MainActivity.this).getSupportFragmentManager(),"Image Dialog");
-*//*
-                   openDialog();
-                   //simpleDialog("Du har tabt! Ordet var: " + spil.getOrdet());
+                    mDialogDescription = "Du har tabt! Ordet var: " + spil.getOrdet();
+                    openDialog(mDialogDescription);
                 }
             }
         });
-    }*/
-
-    private Button button;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog();
-            }
-        });
     }
 
-    public void openDialog() {
+
+    public void openDialog(String s) {
         ExampleDialog exampleDialog = new ExampleDialog();
+        Bundle bundle = new Bundle();
+        bundle.putString("TEXT", s);
+        exampleDialog.setArguments(bundle);
         exampleDialog.show(getSupportFragmentManager(), "example dialog");
     }
 
-    // Not working
-//    public void openDialog() {
-//        simpleDialogFragment dialogFragment = new simpleDialogFragment();
-//        dialogFragment.show((MainActivity.this).getSupportFragmentManager(),"Image Dialog");
-//    }
-
-    public void simpleDialog(String s) {
-        // Use the Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Galgeleg")
-                .setMessage(s)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // FIRE ZE MISSILES!
-                    }
-                });
-                /*.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User cancelled the dialog
-                    }
-                });*/
-
-
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
 }
 
 
