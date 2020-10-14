@@ -3,6 +3,7 @@ package com.example.galgeleg;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,12 +29,16 @@ import android.widget.Toast;
 // https://www.youtube.com/watch?v=Bsm-BlXo2SI
 // https://www.youtube.com/watch?v=n8oasrJs_eY
 // https://www.youtube.com/watch?v=_sOHZAk6KnA +  https://github.com/afollestad/material-dialogs
+// Intent : don't forget to define new activity in AndroidManifest.xml
+// https://codinginflow.com/tutorials/android/open-a-new-activity-and-pass-variables
 public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_TEXT = "MD";
 
     GridView mGridView;
     ImageView mImageView;
     Dialog mDialog;
-    String mDialogDescription;
+    String mResultDescription;
+
     Galgelogik spil = new Galgelogik();
 
     final String[] gridViewValues = {
@@ -57,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         spil.startNytSpil();
 
@@ -89,16 +95,24 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (spil.erSpilletVundet()) {
-                    mDialogDescription = "Antal forsøg: " + spil.getAntalForsøg();
-                    openDialog(mDialogDescription);
+                    mResultDescription = "Antal forsøg: " + spil.getAntalForsøg();
+                    //openDialog(mResultDescription);
+                    openResultActivity(mResultDescription);
                 }
 
                 if (spil.erSpilletTabt()) {
-                    mDialogDescription = "Du har tabt! Ordet var: " + spil.getOrdet();
-                    openDialog(mDialogDescription);
+                    mResultDescription = "Du har tabt! Ordet var: " + spil.getOrdet();
+                    // openDialog(mDialogDescription);
+                    openResultActivity(mResultDescription);
                 }
             }
         });
+    }
+
+    public void openResultActivity(String result) {
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra(EXTRA_TEXT, result);
+        startActivity(intent);
     }
 
 
