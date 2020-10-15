@@ -86,25 +86,25 @@ public class MainActivity extends Activity {
 
                 if (spil.erSidsteBogstavKorrekt()) {
                     Toast.makeText(getApplicationContext(),
-                            ((TextView) view).getText() + " is correct", Toast.LENGTH_SHORT).show();
+                            ((TextView) view).getText() + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
                 } else {
                     if (imageTracking == images.length-1)
                         imageTracking = -1;
                     mImageView.setImageResource(images[++imageTracking]);
                     Toast.makeText(getApplicationContext(),
-                            ((TextView) view).getText() + " is wrong", Toast.LENGTH_SHORT).show();
+                            ((TextView) view).getText() + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
                 }
 
 
 
                 if (spil.erSpilletVundet()) {
-                    mResultDescription = "Antal forsøg: " + spil.getAntalForsøg();
+                    mResultDescription = getString(R.string.win_message) + spil.getAntalForsøg();
                     //openDialog(mResultDescription);
                     openResultActivity(mResultDescription);
                 }
 
                 if (spil.erSpilletTabt()) {
-                    mResultDescription = "Du har tabt! Ordet var: " + spil.getOrdet();
+                    mResultDescription = getString(R.string.lose_message) + spil.getOrdet();
                      //openDialog(mResultDescription);
                     openResultActivity(mResultDescription);
                 }

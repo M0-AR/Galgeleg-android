@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">s176492-Galgeleg</string>
+    <string name="dialog_question">"Hej ? "</string>
+    <string name="ok">ok</string>
+    <string name="lose_message">"Du har tabt! Ordet var: "</string>
+    <string name="win_message">"Antal forsøg: "</string>
+    <string name="cancel">annul</string>
+    <string name="correct_letter"> er korrekt</string>
+    <string name="wrong_letter"> er forkert</string>
+</resources>

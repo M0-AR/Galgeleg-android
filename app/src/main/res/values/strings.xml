@@ -3,4 +3,8 @@
     <string name="dialog_question">Hi ?</string>
     <string name="ok">ok</string>
     <string name="cancel">cancel</string>
+    <string name="correct_letter"> is correct</string>
+    <string name="wrong_letter"> is wrong</string>
+    <string name="win_message">Number Of Trials</string>
+    <string name="lose_message">You have lost! The word was: </string>
 </resources>
