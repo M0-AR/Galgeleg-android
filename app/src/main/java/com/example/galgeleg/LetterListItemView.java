@@ -26,7 +26,7 @@ public class LetterListItemView extends AppCompatTextView {
         linePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         linePaint.setColor(resources.getColor(R.color.colorAccent));
 
-        letterBackgroundColor = resources.getColor(R.color.letter_color);
+        letterBackgroundColor = resources.getColor(R.color.white);
     }
 
     @Override

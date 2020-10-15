@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:orientation="horizontal"
     android:padding="15dp"
-    android:textColor="@color/black"
+    android:textColor="@color/colorAccent"
     android:scrollbars="horizontal">
 
 </com.example.galgeleg.LetterListItemView>
