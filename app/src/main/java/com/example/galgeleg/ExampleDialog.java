@@ -1,6 +1,7 @@
 package com.example.galgeleg;
 
 import android.app.Dialog;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.os.Bundle;
 

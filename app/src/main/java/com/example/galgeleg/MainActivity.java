@@ -1,10 +1,13 @@
 package com.example.galgeleg;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,7 +34,7 @@ import android.widget.Toast;
 // https://www.youtube.com/watch?v=_sOHZAk6KnA +  https://github.com/afollestad/material-dialogs
 // Intent : don't forget to define new activity in AndroidManifest.xml
 // https://codinginflow.com/tutorials/android/open-a-new-activity-and-pass-variables
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     public static final String EXTRA_TEXT = "MD";
 
     GridView mGridView;
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (spil.erSpilletTabt()) {
                     mResultDescription = "Du har tabt! Ordet var: " + spil.getOrdet();
-                    // openDialog(mDialogDescription);
+                     //openDialog(mResultDescription);
                     openResultActivity(mResultDescription);
                 }
             }
@@ -115,15 +118,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+/*
+    // Todo extend from AppCompatActivity instead of Activity but then get theme error
     public void openDialog(String s) {
         ExampleDialog exampleDialog = new ExampleDialog();
         Bundle bundle = new Bundle();
         bundle.putString("TEXT", s);
         exampleDialog.setArguments(bundle);
         exampleDialog.show(getSupportFragmentManager(), "example dialog");
-    }
 
+    }
+*/
 }
 
 
