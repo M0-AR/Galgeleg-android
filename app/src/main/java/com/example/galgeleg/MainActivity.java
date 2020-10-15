@@ -34,6 +34,9 @@ import android.widget.Toast;
 // https://www.youtube.com/watch?v=_sOHZAk6KnA +  https://github.com/afollestad/material-dialogs
 // Intent : don't forget to define new activity in AndroidManifest.xml
 // https://codinginflow.com/tutorials/android/open-a-new-activity-and-pass-variables
+// Add language
+// https://www.youtube.com/watch?v=72qURZPIUIA
+// https://stackoverflow.com/questions/2183962/how-to-read-value-from-string-xml-in-android
 public class MainActivity extends Activity {
     public static final String EXTRA_TEXT = "MD";
 
@@ -71,8 +74,12 @@ public class MainActivity extends Activity {
 
         mGridView = findViewById(R.id.gridView);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, gridViewValues);
+        int resID = R.layout.letterlist_item;
+
+        // ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+              //  android.R.layout.simple_list_item_1, gridViewValues);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, resID, gridViewValues);
+
         mGridView.setAdapter(adapter);
 
         mImageView = findViewById(R.id.imageView);
@@ -98,13 +105,13 @@ public class MainActivity extends Activity {
 
 
                 if (spil.erSpilletVundet()) {
-                    mResultDescription = getString(R.string.win_message) + spil.getAntalForsøg();
+                    mResultDescription = getString(R.string.win_message) + " " + spil.getAntalForsøg();
                     //openDialog(mResultDescription);
                     openResultActivity(mResultDescription);
                 }
 
                 if (spil.erSpilletTabt()) {
-                    mResultDescription = getString(R.string.lose_message) + spil.getOrdet();
+                    mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
                      //openDialog(mResultDescription);
                     openResultActivity(mResultDescription);
                 }

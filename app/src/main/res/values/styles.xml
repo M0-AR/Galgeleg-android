@@ -9,6 +9,6 @@
 
     <style name="GalgelegTheme"
         parent="@android:style/Theme.Black">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>
