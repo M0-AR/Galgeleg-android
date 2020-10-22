@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -24,17 +25,17 @@ public class ResultActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
 
         String text = bundle.getString(MainActivity.RESULT_TEXT);
-        String correctLetters = bundle.getString(MainActivity.CORRECT_LETTERS);
-        String wrongLetters = bundle.getString(MainActivity.WRONG_LETTERS);
+        String correctLetters = getString(R.string.correct_letters) + bundle.getString(MainActivity.CORRECT_LETTERS);
+        String wrongLetters = getString(R.string.wrong_letters) + bundle.getString(MainActivity.WRONG_LETTERS);
 
         TextView textView1 = findViewById(R.id.textView1);
         textView1.setText(text);
         TextView textView2 = findViewById(R.id.textView2);
-        textView2.setText(getString(R.string.correct_letters) + correctLetters);
+        textView2.setText(correctLetters);
         TextView textView3 = findViewById(R.id.textView3);
-        textView3.setText(getString(R.string.wrong_letters) + wrongLetters);
+        textView3.setText( wrongLetters);
 
-        save();
+        save(text + "\n" + correctLetters + "\n" + wrongLetters);
     }
 
 
@@ -51,8 +52,12 @@ public class ResultActivity extends Activity {
         }
     }
 
-    public void save() {
-
+    public void save(String s) {
+        try (FileOutputStream fos = openFileOutput(FILE_NAME, MODE_PRIVATE)) {
+            fos.write(s.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
