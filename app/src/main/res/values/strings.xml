@@ -7,4 +7,6 @@
     <string name="wrong_letter"> is wrong</string>
     <string name="win_message">Number Of Trials</string>
     <string name="lose_message">You have lost! The word was: </string>
+    <string name="correct_letters">"Correct Letters: "</string>
+    <string name="wrong_letters">"Wrong letters: "</string>
 </resources>

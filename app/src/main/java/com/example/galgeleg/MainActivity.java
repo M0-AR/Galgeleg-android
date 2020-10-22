@@ -1,13 +1,9 @@
 package com.example.galgeleg;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +11,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 //ImageView
 // https://stackoverflow.com/questions/8051069/how-to-show-image-using-imageview-in-android
 // Update Image
@@ -37,13 +34,20 @@ import android.widget.Toast;
 // Add language
 // https://www.youtube.com/watch?v=72qURZPIUIA
 // https://stackoverflow.com/questions/2183962/how-to-read-value-from-string-xml-in-android
+// https://stackoverflow.com/questions/5341151/problems-with-positioning-textview-under-another-textview-in-relative-layout
+// https://stackoverflow.com/questions/9379023/sending-multiple-variable-values-to-another-activity
 public class MainActivity extends Activity {
-    public static final String EXTRA_TEXT = "MD";
+    public static final String RESULT_TEXT = "com.example.galgeleg.resultMassage";
+    public static final String CORRECT_LETTERS = "com.example.galgeleg.correctLetter";
+    public static final String WRONG_LETTERS = "com.example.galgeleg.wrongLetter";
 
     GridView mGridView;
     ImageView mImageView;
     Dialog mDialog;
     String mResultDescription;
+    String mCorrectLettersTheUserUsed;
+    String mWrongLettersTheUserUsed;
+
 
     Galgelogik spil = new Galgelogik();
 
@@ -94,12 +98,14 @@ public class MainActivity extends Activity {
                 if (spil.erSidsteBogstavKorrekt()) {
                     Toast.makeText(getApplicationContext(),
                             ((TextView) view).getText() + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
+                    mCorrectLettersTheUserUsed +=  ((TextView) view).getText() + " ";
                 } else {
                     if (imageTracking == images.length-1)
                         imageTracking = -1;
                     mImageView.setImageResource(images[++imageTracking]);
                     Toast.makeText(getApplicationContext(),
                             ((TextView) view).getText() + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
+                    mWrongLettersTheUserUsed +=  ((TextView) view).getText() + " ";
                 }
 
 
@@ -121,7 +127,9 @@ public class MainActivity extends Activity {
 
     public void openResultActivity(String result) {
         Intent intent = new Intent(this, ResultActivity.class);
-        intent.putExtra(EXTRA_TEXT, result);
+        intent.putExtra(RESULT_TEXT, result);
+        intent.putExtra(CORRECT_LETTERS, mCorrectLettersTheUserUsed);
+        intent.putExtra(CORRECT_LETTERS, mWrongLettersTheUserUsed);
         startActivity(intent);
     }
 
