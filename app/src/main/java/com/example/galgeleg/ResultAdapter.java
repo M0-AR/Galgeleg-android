@@ -1,5 +1,6 @@
 package com.example.galgeleg;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
     private ArrayList<ResultItem> mResultList;
 
     public static class ResultViewHolder extends RecyclerView.ViewHolder {
+        public TextView mTextView0;
         public TextView mTextView1;
         public TextView mTextView2;
         public TextView mTextView3;
@@ -21,6 +23,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
 
         public ResultViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.mTextView0 = itemView.findViewById(R.id.textView0);
             this.mTextView1 = itemView.findViewById(R.id.textView1);
             this.mTextView2 = itemView.findViewById(R.id.textView2);
             this.mTextView3 = itemView.findViewById(R.id.textView3);
@@ -34,7 +37,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
     @NonNull
     @Override
     public ResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.result_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_result, parent, false);
         ResultViewHolder resultViewHolder = new ResultViewHolder(view);
         return resultViewHolder;
     }
@@ -43,6 +46,8 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
     public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
         ResultItem currentResultItem = mResultList.get(position);
 
+
+        holder.mTextView0.setText(currentResultItem.getDate().toString());
         holder.mTextView1.setText(currentResultItem.getResultMessage());
         holder.mTextView2.setText(currentResultItem.getCorrectLetters());
         holder.mTextView3.setText(currentResultItem.getWrongLetters());
