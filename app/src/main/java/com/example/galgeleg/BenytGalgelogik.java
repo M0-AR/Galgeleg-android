@@ -5,7 +5,7 @@ public class BenytGalgelogik {
     public static void main(String[] args) {
 
         Galgelogik spil = new Galgelogik();
-        spil.startNytSpil();
+        //spil.startNytSpil();
         // Kommentér ind for at hente ord fra DR
     /*
     try {
