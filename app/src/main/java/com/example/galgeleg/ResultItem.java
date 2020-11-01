@@ -1,5 +1,7 @@
 package com.example.galgeleg;
 
+import java.io.Serializable;
+
 public class ResultItem {
     private String mResultMessage;
     private String mCorrectLetters;

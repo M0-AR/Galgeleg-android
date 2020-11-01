@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 //ImageView
 // https://stackoverflow.com/questions/8051069/how-to-show-image-using-imageview-in-android
 // Update Image
@@ -36,7 +38,7 @@ import android.widget.Toast;
 // https://stackoverflow.com/questions/2183962/how-to-read-value-from-string-xml-in-android
 // https://stackoverflow.com/questions/5341151/problems-with-positioning-textview-under-another-textview-in-relative-layout
 // https://stackoverflow.com/questions/9379023/sending-multiple-variable-values-to-another-activity
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     public static final String RESULT_TEXT = "com.example.galgeleg.resultMassage";
     public static final String CORRECT_LETTERS = "com.example.galgeleg.correctLetter";
     public static final String WRONG_LETTERS = "com.example.galgeleg.wrongLetter";
@@ -45,8 +47,8 @@ public class MainActivity extends Activity {
     ImageView mImageView;
     Dialog mDialog;
     String mResultDescription;
-    String mCorrectLettersTheUserUsed;
-    String mWrongLettersTheUserUsed;
+    String mCorrectLettersTheUserUsed = "";
+    String mWrongLettersTheUserUsed = "";
 
 
     Galgelogik spil = new Galgelogik();
@@ -95,24 +97,25 @@ public class MainActivity extends Activity {
 
                 spil.gætBogstav((String) ((TextView) view).getText());
 
+                String getWord = ((TextView) view).getText()+"";
                 if (spil.erSidsteBogstavKorrekt()) {
                     Toast.makeText(getApplicationContext(),
-                            ((TextView) view).getText() + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
-                    mCorrectLettersTheUserUsed +=  ((TextView) view).getText() + " ";
+                            getWord + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
+                    mCorrectLettersTheUserUsed += getWord + " ";
                 } else {
                     if (imageTracking == images.length-1)
                         imageTracking = -1;
                     mImageView.setImageResource(images[++imageTracking]);
                     Toast.makeText(getApplicationContext(),
-                            ((TextView) view).getText() + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
-                    mWrongLettersTheUserUsed +=  ((TextView) view).getText() + " ";
+                            getWord + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
+                    mWrongLettersTheUserUsed +=  getWord + " ";
                 }
 
 
 
                 if (spil.erSpilletVundet()) {
                     mResultDescription = getString(R.string.win_message) + " " + spil.getAntalForsøg();
-                    //openDialog(mResultDescription);
+                    openDialog(mResultDescription);
                     openResultActivity(mResultDescription);
                 }
 
@@ -129,11 +132,10 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, ResultActivity.class);
         intent.putExtra(RESULT_TEXT, result);
         intent.putExtra(CORRECT_LETTERS, mCorrectLettersTheUserUsed);
-        intent.putExtra(CORRECT_LETTERS, mWrongLettersTheUserUsed);
+        intent.putExtra(WRONG_LETTERS, mWrongLettersTheUserUsed);
         startActivity(intent);
     }
 
-/*
     // Todo extend from AppCompatActivity instead of Activity but then get theme error
     public void openDialog(String s) {
         ExampleDialog exampleDialog = new ExampleDialog();
@@ -143,7 +145,6 @@ public class MainActivity extends Activity {
         exampleDialog.show(getSupportFragmentManager(), "example dialog");
 
     }
-*/
 }
 
 
