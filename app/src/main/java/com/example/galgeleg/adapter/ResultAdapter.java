@@ -1,6 +1,5 @@
-package com.example.galgeleg;
+package com.example.galgeleg.adapter;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.galgeleg.R;
+import com.example.galgeleg.ResultItem;
 
 import java.util.ArrayList;
 
@@ -44,8 +46,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
 
     @Override
     public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
-        ResultItem currentResultItem = mResultList.get(position);
-
+        ResultItem currentResultItem = mResultList.get((mResultList.size() - 1) - position);
 
         holder.mTextView0.setText(currentResultItem.getDate().toString());
         holder.mTextView1.setText(currentResultItem.getResultMessage());

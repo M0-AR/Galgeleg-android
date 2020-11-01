@@ -5,11 +5,11 @@ import android.app.Activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.galgeleg.adapter.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,13 +17,14 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
+
+import static com.example.galgeleg.Constants.*;
+
 // https://stackoverflow.com/questions/4118751/how-do-i-serialize-an-object-and-save-it-to-a-file-in-android
 // https://stackoverflow.com/questions/27409718/java-reading-multiple-objects-from-a-file-as-they-were-in-an-array
 // https://stackoverflow.com/questions/31339075/getting-multiple-objects-from-serialization-in-java
-
+// https://codinginflow.com/tutorials/android/save-arraylist-to-sharedpreferences-with-gson
 public class ResultActivity extends Activity {
-    public static final String FILE_NAME = "result.ser";
-
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -38,23 +39,11 @@ public class ResultActivity extends Activity {
 
         loadData();
 
-      //  mResultItemList = new ArrayList<>();
-        Bundle bundle = getIntent().getExtras();
-
-        String text = bundle.getString(MainActivity.RESULT_TEXT);
-        String correctLetters = getString(R.string.correct_letters) + bundle.getString(MainActivity.CORRECT_LETTERS);
-        String wrongLetters = getString(R.string.wrong_letters) + bundle.getString(MainActivity.WRONG_LETTERS);
-        mResultItemList.add(new ResultItem(text, correctLetters, wrongLetters, new Date()));
-
+        Bundle bundle =  getIntent().getExtras();
+        final ResultItem resultItem = (ResultItem) bundle.getSerializable(OBJECT);
+        mResultItemList.add(resultItem);
 
         buildRecyclerView();
-        /*TextView textView1 = findViewById(R.id.textView1);
-        textView1.setText(text);
-        TextView textView2 = findViewById(R.id.textView2);
-        textView2.setText(correctLetters);
-        TextView textView3 = findViewById(R.id.textView3);
-        textView3.setText( wrongLetters);
-*/
         saveData();
     }
 

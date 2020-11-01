@@ -1,9 +1,9 @@
 package com.example.galgeleg;
 
 public interface GalgelegState {
-    void startGame();
-    void playGame();
-    void win();
-    void lose();
-    void displayResult();
+    void start_state();
+    void play_state();
+    void win_state();
+    void lose_state();
+    void display_result_state();
 }

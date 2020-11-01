@@ -1,8 +1,5 @@
 package com.example.galgeleg;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Date;
+
+import static com.example.galgeleg.Constants.OBJECT;
 
 //ImageView
 // https://stackoverflow.com/questions/8051069/how-to-show-image-using-imageview-in-android
@@ -38,14 +39,12 @@ import androidx.appcompat.app.AppCompatActivity;
 // https://stackoverflow.com/questions/2183962/how-to-read-value-from-string-xml-in-android
 // https://stackoverflow.com/questions/5341151/problems-with-positioning-textview-under-another-textview-in-relative-layout
 // https://stackoverflow.com/questions/9379023/sending-multiple-variable-values-to-another-activity
-public class MainActivity extends AppCompatActivity {
-    public static final String RESULT_TEXT = "com.example.galgeleg.resultMassage";
-    public static final String CORRECT_LETTERS = "com.example.galgeleg.correctLetter";
-    public static final String WRONG_LETTERS = "com.example.galgeleg.wrongLetter";
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+
 
     GridView mGridView;
     ImageView mImageView;
-    Dialog mDialog;
+    android.app.Dialog mDialog;
     String mResultDescription;
     String mCorrectLettersTheUserUsed = "";
     String mWrongLettersTheUserUsed = "";
@@ -82,69 +81,57 @@ public class MainActivity extends AppCompatActivity {
 
         int resID = R.layout.letterlist_item;
 
-        // ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-              //  android.R.layout.simple_list_item_1, gridViewValues);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, resID, gridViewValues);
 
         mGridView.setAdapter(adapter);
-
+        mGridView.setOnItemClickListener(this);
         mImageView = findViewById(R.id.imageView);
-
-
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                spil.gætBogstav((String) ((TextView) view).getText());
-
-                String getWord = ((TextView) view).getText()+"";
-                if (spil.erSidsteBogstavKorrekt()) {
-                    Toast.makeText(getApplicationContext(),
-                            getWord + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
-                    mCorrectLettersTheUserUsed += getWord + " ";
-                } else {
-                    if (imageTracking == images.length-1)
-                        imageTracking = -1;
-                    mImageView.setImageResource(images[++imageTracking]);
-                    Toast.makeText(getApplicationContext(),
-                            getWord + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
-                    mWrongLettersTheUserUsed +=  getWord + " ";
-                }
-
-
-
-                if (spil.erSpilletVundet()) {
-                    mResultDescription = getString(R.string.win_message) + " " + spil.getAntalForsøg();
-                    openDialog(mResultDescription);
-                    openResultActivity(mResultDescription);
-                }
-
-                if (spil.erSpilletTabt()) {
-                    mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
-                     //openDialog(mResultDescription);
-                    openResultActivity(mResultDescription);
-                }
-            }
-        });
     }
 
-    public void openResultActivity(String result) {
-        Intent intent = new Intent(this, ResultActivity.class);
-        intent.putExtra(RESULT_TEXT, result);
-        intent.putExtra(CORRECT_LETTERS, mCorrectLettersTheUserUsed);
-        intent.putExtra(WRONG_LETTERS, mWrongLettersTheUserUsed);
-        startActivity(intent);
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        spil.gætBogstav((String) ((TextView) view).getText());
+
+        String getWord = ((TextView) view).getText()+"";
+        if (spil.erSidsteBogstavKorrekt()) {
+            Toast.makeText(getApplicationContext(),
+                    getWord + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
+            mCorrectLettersTheUserUsed += getWord + " ";
+        } else {
+            if (imageTracking == images.length-1)
+                imageTracking = -1;
+            mImageView.setImageResource(images[++imageTracking]);
+            Toast.makeText(getApplicationContext(),
+                    getWord + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
+            mWrongLettersTheUserUsed +=  getWord + " ";
+        }
+
+
+
+        if (spil.erSpilletVundet()) {
+            mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
+            openDialog(new ResultItem(mResultDescription, mCorrectLettersTheUserUsed, mWrongLettersTheUserUsed, new Date()));
+        }
+
+        if (spil.erSpilletTabt()) {
+            mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
+            openDialog(new ResultItem(mResultDescription, mCorrectLettersTheUserUsed, mWrongLettersTheUserUsed, new Date()));
+        }
+
     }
 
     // Todo extend from AppCompatActivity instead of Activity but then get theme error
-    public void openDialog(String s) {
-        ExampleDialog exampleDialog = new ExampleDialog();
+    public void openDialog(ResultItem resultItem) {
+        ResultDialog resultDialog = new ResultDialog();
         Bundle bundle = new Bundle();
-        bundle.putString("TEXT", s);
-        exampleDialog.setArguments(bundle);
-        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+        bundle.putSerializable(OBJECT, resultItem);
+        resultDialog.setArguments(bundle);
+        resultDialog.show(getSupportFragmentManager(), "example dialog");
 
     }
+
 }
 
 

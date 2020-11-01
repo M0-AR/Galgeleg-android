@@ -3,11 +3,17 @@ package com.example.galgeleg;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ResultItem {
+public class ResultItem implements Serializable{
     private String mResultMessage;
     private String mCorrectLetters;
     private String mWrongLetters;
     private Date date;
+
+    public ResultItem(String mResultMessage, String mCorrectLetters, String mWrongLetters) {
+        this.mResultMessage = mResultMessage;
+        this.mCorrectLetters = mCorrectLetters;
+        this.mWrongLetters = mWrongLetters;
+    }
 
     public ResultItem(String mResultMessage, String mCorrectLetters, String mWrongLetters, Date date) {
         this.mResultMessage = mResultMessage;
