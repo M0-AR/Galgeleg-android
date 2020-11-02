@@ -1,6 +1,6 @@
 package com.example.galgeleg.data;
 
-import com.example.galgeleg.factory.Word;
+import com.example.galgeleg.factory_word.Word;
 
 public class MemoryData extends Word {
 

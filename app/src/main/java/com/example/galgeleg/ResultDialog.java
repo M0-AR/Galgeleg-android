@@ -7,6 +7,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.galgeleg.activity.ResultActivity;
+import com.example.galgeleg.item.*;
+
 import static com.example.galgeleg.Constants.*;
 
 public class ResultDialog extends AppCompatDialogFragment {

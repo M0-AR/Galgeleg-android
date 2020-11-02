@@ -1,8 +1,6 @@
 package com.example.galgeleg.data;
 
-import com.example.galgeleg.factory.Word;
-
-import java.util.ArrayList;
+import com.example.galgeleg.factory_word.Word;
 
 public class GoogleSheetData extends Word {
 

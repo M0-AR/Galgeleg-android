@@ -1,6 +1,6 @@
 package com.example.galgeleg.data;
 
-import com.example.galgeleg.factory.Word;
+import com.example.galgeleg.factory_word.Word;
 
 import java.util.Arrays;
 import java.util.HashSet;

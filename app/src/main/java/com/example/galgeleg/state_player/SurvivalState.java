@@ -1,11 +1,11 @@
-package com.example.galgeleg.state;
+package com.example.galgeleg.state_player;
 
 import com.example.galgeleg.Galgelogik;
 import com.example.galgeleg.adapter.PlayerStateAdapter;
 
-public class DeathState extends PlayerStateAdapter {
+public class SurvivalState extends PlayerStateAdapter {
     @Override
     public void action(Galgelogik galgelogik) {
-        galgelogik.ui.dead();
+        galgelogik.ui.survive();
     }
 }

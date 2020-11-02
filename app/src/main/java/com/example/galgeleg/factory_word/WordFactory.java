@@ -1,4 +1,4 @@
-package com.example.galgeleg.factory;
+package com.example.galgeleg.factory_word;
 
 import com.example.galgeleg.data.GoogleSheetData;
 import com.example.galgeleg.data.MemoryData;

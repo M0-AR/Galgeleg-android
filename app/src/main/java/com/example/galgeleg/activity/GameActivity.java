@@ -1,5 +1,6 @@
-package com.example.galgeleg;
+package com.example.galgeleg.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.galgeleg.Galgelogik;
+import com.example.galgeleg.R;
+import com.example.galgeleg.ResultDialog;
+import com.example.galgeleg.item.*;
 
 import java.util.Date;
 
@@ -100,14 +106,16 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
         if (spil.erSidsteBogstavKorrekt()) {
             Toast.makeText(getApplicationContext(),
                     getWord + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
-            mCorrectLettersTheUserUsed += getWord + " ";
+           // mCorrectLettersTheUserUsed += getWord + " ";
+            spil.mCorrectLettersTheUserUsed.add(getWord);
         } else {
             if (imageTracking == images.length-1)
                 imageTracking = -1;
             mImageView.setImageResource(images[++imageTracking]);
             Toast.makeText(getApplicationContext(),
                     getWord + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
-            mWrongLettersTheUserUsed +=  getWord + " ";
+         //   mWrongLettersTheUserUsed +=  getWord + " ";
+            spil.mWrongLettersTheUserUsed.add(getWord);
         }
 
         spil.erSpilletVundet();
@@ -115,15 +123,21 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
+    @SuppressLint("NewApi")
     public void survive() {
         mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
-        openDialog(new ResultItem(mResultDescription, mCorrectLettersTheUserUsed, mWrongLettersTheUserUsed, new Date()));
+        openDialog(new ResultItem(mResultDescription,
+                "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
+                 "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
     }
 
 
+    @SuppressLint("NewApi")
     public void dead() {
         mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
-        openDialog(new ResultItem(mResultDescription, mCorrectLettersTheUserUsed, mWrongLettersTheUserUsed, new Date()));
+        openDialog(new ResultItem(mResultDescription,
+                "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
+                "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
     }
 
     public void openDialog(ResultItem resultItem) {

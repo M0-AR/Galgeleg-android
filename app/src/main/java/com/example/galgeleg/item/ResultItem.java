@@ -1,4 +1,4 @@
-package com.example.galgeleg;
+package com.example.galgeleg.item;
 
 import java.io.Serializable;
 import java.util.Date;

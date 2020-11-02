@@ -1,4 +1,4 @@
-package com.example.galgeleg.factory;
+package com.example.galgeleg.factory_word;
 
 import java.io.BufferedReader;
 import java.io.IOException;

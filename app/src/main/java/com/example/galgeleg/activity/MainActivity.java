@@ -1,4 +1,4 @@
-package com.example.galgeleg;
+package com.example.galgeleg.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.galgeleg.factory.Word;
-import com.example.galgeleg.factory.WordFactory;
+import com.example.galgeleg.R;
+import com.example.galgeleg.factory_word.Word;
+import com.example.galgeleg.factory_word.WordFactory;
 
 import static com.example.galgeleg.Constants.WORD;
 

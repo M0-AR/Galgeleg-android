@@ -1,4 +1,4 @@
-package com.example.galgeleg;
+package com.example.galgeleg.item;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatTextView;
+
+import com.example.galgeleg.R;
 
 public class LetterListItemView extends AppCompatTextView {
 

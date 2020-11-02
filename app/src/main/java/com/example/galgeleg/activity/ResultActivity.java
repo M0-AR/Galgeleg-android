@@ -1,4 +1,4 @@
-package com.example.galgeleg;
+package com.example.galgeleg.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.galgeleg.R;
+import com.example.galgeleg.item.*;
 import com.example.galgeleg.adapter.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -16,7 +18,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 
 import static com.example.galgeleg.Constants.*;
 

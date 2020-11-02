@@ -1,15 +1,20 @@
 package com.example.galgeleg;
 
-import com.example.galgeleg.state.ActionState;
-import com.example.galgeleg.state.DeathState;
-import com.example.galgeleg.state.PlayerState;
-import com.example.galgeleg.state.SurvivalState;
+import com.example.galgeleg.activity.*;
+import com.example.galgeleg.state_player.ActionState;
+import com.example.galgeleg.state_player.DeathState;
+import com.example.galgeleg.state_player.PlayerState;
+import com.example.galgeleg.state_player.SurvivalState;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Galgelogik {
     private PlayerState currentPlayerState;
     public static GameActivity ui;
+    public HashSet<String> mCorrectLettersTheUserUsed = new HashSet<>();
+    public HashSet<String> mWrongLettersTheUserUsed = new HashSet<>();
+
 
     /** AHT afprøvning er muligeOrd synlig på pakkeniveau */
     public ArrayList<String> muligeOrd = new ArrayList<String>();
@@ -131,4 +136,6 @@ public class Galgelogik {
     public void setState(PlayerState playerState) {
        currentPlayerState = playerState;
     }
+
+
 }
