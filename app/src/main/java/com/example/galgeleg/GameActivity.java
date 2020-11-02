@@ -50,7 +50,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     String mWrongLettersTheUserUsed = "";
 
 
-    Galgelogik spil = new Galgelogik();
+    Galgelogik spil = new Galgelogik(this);
 
     final String[] gridViewValues = {
             "a", "b", "c", "d", "e", "f",
@@ -110,18 +110,20 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
             mWrongLettersTheUserUsed +=  getWord + " ";
         }
 
+        spil.erSpilletVundet();
+        spil.erSpilletTabt();
+    }
 
 
-        if (spil.erSpilletVundet()) {
-            mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
-            openDialog(new ResultItem(mResultDescription, mCorrectLettersTheUserUsed, mWrongLettersTheUserUsed, new Date()));
-        }
+    public void survive() {
+        mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
+        openDialog(new ResultItem(mResultDescription, mCorrectLettersTheUserUsed, mWrongLettersTheUserUsed, new Date()));
+    }
 
-        if (spil.erSpilletTabt()) {
-            mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
-            openDialog(new ResultItem(mResultDescription, mCorrectLettersTheUserUsed, mWrongLettersTheUserUsed, new Date()));
-        }
 
+    public void dead() {
+        mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
+        openDialog(new ResultItem(mResultDescription, mCorrectLettersTheUserUsed, mWrongLettersTheUserUsed, new Date()));
     }
 
     public void openDialog(ResultItem resultItem) {

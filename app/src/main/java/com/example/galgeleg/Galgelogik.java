@@ -1,10 +1,15 @@
 package com.example.galgeleg;
 
+import com.example.galgeleg.state.ActionState;
+import com.example.galgeleg.state.DeathState;
+import com.example.galgeleg.state.PlayerState;
+import com.example.galgeleg.state.SurvivalState;
+
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Galgelogik {
-    private GalgeState currentState;
+    private PlayerState currentPlayerState;
+    public static GameActivity ui;
 
     /** AHT afprøvning er muligeOrd synlig på pakkeniveau */
     public ArrayList<String> muligeOrd = new ArrayList<String>();
@@ -21,7 +26,8 @@ public class Galgelogik {
         return antalForsøg;
     }
 
-    public Galgelogik() {
+    public Galgelogik(GameActivity context) {
+        ui = context;
     }
 
 
@@ -45,12 +51,16 @@ public class Galgelogik {
         return sidsteBogstavVarKorrekt;
     }
 
-    public boolean erSpilletVundet() {
-        return spilletErVundet;
+    public void erSpilletVundet() {
+        if (spilletErVundet)
+            setState(new SurvivalState());
+        currentPlayerState.action(this);
     }
 
-    public boolean erSpilletTabt() {
-        return spilletErTabt;
+    public void erSpilletTabt() {
+        if (spilletErTabt)
+            setState(new DeathState());
+        currentPlayerState.action(this);
     }
 
     public boolean erSpilletSlut() {
@@ -59,6 +69,7 @@ public class Galgelogik {
 
 
     public void startNytSpil(String word) {
+        setState(new ActionState());
         brugteBogstaver.clear();
         antalForkerteBogstaver = 0;
         spilletErVundet = false;
@@ -117,4 +128,7 @@ public class Galgelogik {
         System.out.println("---------- ");
     }
 
+    public void setState(PlayerState playerState) {
+       currentPlayerState = playerState;
+    }
 }
