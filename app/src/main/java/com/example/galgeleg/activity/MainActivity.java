@@ -4,13 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.galgeleg.R;
+import com.example.galgeleg.dialog.SearchWordDialog;
 import com.example.galgeleg.factory_word.Word;
 import com.example.galgeleg.factory_word.WordFactory;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import static com.example.galgeleg.Constants.WORD;
 
@@ -39,8 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    static Executor bgThread = Executors.newSingleThreadExecutor(); // håndtag til en baggrundstrå
+    static Handler uiThread = new Handler(Looper.getMainLooper());  // håndtag til forgrundstråden
+
     @Override
     public void onClick(View v) {
+        openDialog();
         switch (v.getId()) {
             case R.id.memory_button:
             {
@@ -49,17 +59,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }break;
             case R.id.google_sheet_button:
             {
-                word = wordFactory.makeData(1);
-                goToGameActivity(word.getWord());
+                bgThread.execute(() -> {
+                    word = wordFactory.makeData(1);
+                    uiThread.post(() -> goToGameActivity(word.getWord()));
+                });
             }break;
             case R.id.website_button:
             {
-                word = wordFactory.makeData(2);
-                goToGameActivity(word.getWord());
+                bgThread.execute(() -> {
+                    word = wordFactory.makeData(2);
+                    uiThread.post(() -> goToGameActivity(word.getWord()));
+                });
             }break;
         }
     }
 
+
+    public void openDialog() {
+        final SearchWordDialog lottie=new SearchWordDialog(this);
+        lottie.show();
+    }
 
     public void goToGameActivity(String word) {
         Intent intent = new Intent(this, GameActivity.class);

@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.galgeleg.Galgelogik;
 import com.example.galgeleg.R;
-import com.example.galgeleg.ResultDialog;
+import com.example.galgeleg.dialog.ResultDialog;
 import com.example.galgeleg.item.*;
 
 import java.util.Date;
@@ -70,7 +70,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
                           R.drawable.forkert5,
                           R.drawable.forkert6};
 
-    int imageTracking = -1;
+    int imageTrackingIndex = -1;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -96,27 +96,23 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        spil.gætBogstav((String) ((TextView) view).getText());
-
-        String getWord = ((TextView) view).getText()+"";
+        String getLetter = ((TextView) view).getText()+"";
+        spil.gætBogstav(getLetter);
         if (spil.erSidsteBogstavKorrekt()) {
             Toast.makeText(getApplicationContext(),
-                    getWord + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
-           // mCorrectLettersTheUserUsed += getWord + " ";
-            spil.mCorrectLettersTheUserUsed.add(getWord);
+                    getLetter + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
+            spil.mCorrectLettersTheUserUsed.add(getLetter);
         } else {
-            if (imageTracking == images.length-1)
-                imageTracking = -1;
-            mImageView.setImageResource(images[++imageTracking]);
+            if (imageTrackingIndex == images.length-1) {
+                spil.erSpilletVundet();
+                spil.erSpilletTabt();
+            } else {
+                mImageView.setImageResource(images[++imageTrackingIndex]);
+            }
             Toast.makeText(getApplicationContext(),
-                    getWord + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
-         //   mWrongLettersTheUserUsed +=  getWord + " ";
-            spil.mWrongLettersTheUserUsed.add(getWord);
+                    getLetter + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
+            spil.mWrongLettersTheUserUsed.add(getLetter);
         }
-
-        spil.erSpilletVundet();
-        spil.erSpilletTabt();
     }
 
 
@@ -144,7 +140,6 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
         resultDialog.setArguments(bundle);
         resultDialog.show(getSupportFragmentManager(), "example dialog");
     }
-
 }
 
 

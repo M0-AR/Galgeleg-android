@@ -1,4 +1,4 @@
-package com.example.galgeleg;
+package com.example.galgeleg.dialog;
 
 import android.content.DialogInterface;
 import android.content.Intent;

@@ -4,6 +4,11 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    // Benyt Java 8 så vi kan lave lambda-udtryk, f.eks. i BenytNetFraBaggrundstraad
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     defaultConfig {
         applicationId "com.example.galgeleg"
         minSdkVersion 21
@@ -32,5 +37,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    def lottieVersion = '3.4.4'
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation 'com.github.mayuce:LottieAlertDialog:1.1'
+
+
 
 }
