@@ -10,16 +10,15 @@ public class MemoryData extends Word {
     }
 
     private void addWords() {
-        // Todo Add or delete some words
         muligeOrd.add("bil");
-//        muligeOrd.add("computer");
-//        muligeOrd.add("programmering");
-//        muligeOrd.add("motorvej");
-//        muligeOrd.add("busrute");
-//        muligeOrd.add("gangsti");
-//        muligeOrd.add("skovsnegl");
-//        muligeOrd.add("solsort");
-//        muligeOrd.add("nitten");
+        muligeOrd.add("computer");
+        muligeOrd.add("programmering");
+        muligeOrd.add("motorvej");
+        muligeOrd.add("busrute");
+        muligeOrd.add("gangsti");
+        muligeOrd.add("skovsnegl");
+        muligeOrd.add("solsort");
+        muligeOrd.add("nitten");
     }
 
 

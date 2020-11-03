@@ -13,7 +13,7 @@ import android.widget.Button;
 import com.example.galgeleg.R;
 import com.example.galgeleg.dialog.SearchWordDialog;
 import com.example.galgeleg.factory_word.Word;
-import com.example.galgeleg.factory_word.WordFactory;
+import com.example.galgeleg.factory_word.DataFactory;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 import static com.example.galgeleg.Constants.WORD;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private WordFactory wordFactory;
+    private DataFactory dataFactory;
     private Word word;
 
     @Override
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        wordFactory = new WordFactory();
+        dataFactory = new DataFactory();
 
         Button memoryButton = findViewById(R.id.memory_button);
         memoryButton.setOnClickListener(this);
@@ -54,20 +54,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.memory_button:
             {
-               word = wordFactory.makeData(0);
+               word = dataFactory.makeData(0);
                goToGameActivity(word.getWord());
             }break;
             case R.id.google_sheet_button:
             {
                 bgThread.execute(() -> {
-                    word = wordFactory.makeData(1);
+                    word = dataFactory.makeData(1);
                     uiThread.post(() -> goToGameActivity(word.getWord()));
                 });
             }break;
             case R.id.website_button:
             {
                 bgThread.execute(() -> {
-                    word = wordFactory.makeData(2);
+                    word = dataFactory.makeData(2);
                     uiThread.post(() -> goToGameActivity(word.getWord()));
                 });
             }break;

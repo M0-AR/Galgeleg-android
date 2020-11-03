@@ -4,7 +4,7 @@ import com.example.galgeleg.data.GoogleSheetData;
 import com.example.galgeleg.data.MemoryData;
 import com.example.galgeleg.data.WebsiteData;
 
-public class WordFactory {
+public class DataFactory {
 
     public Word makeData(int newDataType) {
         switch (newDataType) {

@@ -48,9 +48,6 @@ public class ResultActivity extends Activity {
         saveData();
     }
 
-
-
-
     private void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
