@@ -51,9 +51,6 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
 
     GridView mGridView;
     ImageView mImageView;
-    String mResultDescription;
-    String mCorrectLettersTheUserUsed = "";
-    String mWrongLettersTheUserUsed = "";
 
 
     Galgelogik spil = new Galgelogik(this);
@@ -125,7 +122,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @SuppressLint("NewApi")
     public void survive() {
-        mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
+        String mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
         openDialog(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
                  "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
@@ -134,7 +131,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @SuppressLint("NewApi")
     public void dead() {
-        mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
+       String mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
         openDialog(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
                 "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
@@ -146,7 +143,6 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
         bundle.putSerializable(OBJECT, resultItem);
         resultDialog.setArguments(bundle);
         resultDialog.show(getSupportFragmentManager(), "example dialog");
-
     }
 
 }

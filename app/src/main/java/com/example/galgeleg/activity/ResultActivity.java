@@ -80,6 +80,11 @@ public class ResultActivity extends Activity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    @Override
+    public void onBackPressed() {
+        //moveTaskToBack(true); // exist app
+        finish();
+    }
 
 
 }

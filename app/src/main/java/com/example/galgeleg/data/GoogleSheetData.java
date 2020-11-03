@@ -5,6 +5,11 @@ import com.example.galgeleg.factory_word.Word;
 public class GoogleSheetData extends Word {
 
     public GoogleSheetData() {
+        try {
+            hentOrdFraRegneark("1");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         setWord(getRandomWord());
     }
 

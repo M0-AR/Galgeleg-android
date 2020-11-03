@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 
@@ -30,6 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         googleSheetButton.setOnClickListener(this);
         Button websiteButton = findViewById(R.id.website_button);
         websiteButton.setOnClickListener(this);
+
+        // To avoid android.os.NetworkOnMainThreadException
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
     }
 
     @Override
@@ -58,5 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, GameActivity.class);
         intent.putExtra(WORD, word);
         startActivity(intent);
+        finish();
     }
 }

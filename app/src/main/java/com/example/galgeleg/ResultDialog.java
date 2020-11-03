@@ -30,6 +30,7 @@ public class ResultDialog extends AppCompatDialogFragment {
                         bundle.putSerializable(OBJECT, resultItem);
                         intent.putExtras(bundle);
                         startActivity(intent);
+                        getActivity().finish();
                     }
                 });
         return builder.create();
