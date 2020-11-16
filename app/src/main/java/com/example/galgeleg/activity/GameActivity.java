@@ -53,7 +53,9 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     ImageView mImageView;
 
 
-    Galgelogik spil = new Galgelogik(this);
+    //Galgelogik spil = new Galgelogik(this);
+
+    Galgelogik spil = Galgelogik.getInstance(this);
 
     final String[] gridViewValues = {
             "a", "b", "c", "d", "e", "f",
@@ -79,6 +81,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
 
         Bundle bundle =  getIntent().getExtras();
          String word =  bundle.get(WORD)+"";
+
 
         spil.startNytSpil(word);
 

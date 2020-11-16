@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Galgelogik {
+    private static Galgelogik instance;
     private PlayerState currentPlayerState;
     public static GameActivity ui;
     public HashSet<String> mCorrectLettersTheUserUsed = new HashSet<>();
@@ -27,11 +28,16 @@ public class Galgelogik {
     private boolean spilletErTabt;
     private int antalForsøg;
 
+    public static Galgelogik getInstance(GameActivity gameActivity) {
+        if (instance == null) instance = new Galgelogik(gameActivity);
+        return instance;
+    }
+
     public int getAntalForsøg() {
         return antalForsøg;
     }
 
-    public Galgelogik(GameActivity context) {
+    private Galgelogik(GameActivity context) {
         ui = context;
     }
 
