@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.galgeleg">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +14,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".version_01.activity.GameActivity" />
-
-        <!-- android:theme="@style/AppTheme" -->
-        <activity android:name=".version_01.activity.MainActivity">
+        <activity android:name=".version_01.activity.WordFromList"></activity>
+        <activity android:name=".version_01.activity.PlayerInformation" />
+        <activity android:name=".version_01.activity.MainActivity" />
+        <activity android:name=".version_01.activity.GameActivity" /> <!-- android:theme="@style/AppTheme" -->
+        <activity android:name=".version_01.activity.AloneOrWithFriends">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

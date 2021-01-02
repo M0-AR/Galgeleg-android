@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.example.galgeleg.version_01.activity.ResultActivity;
 import com.example.galgeleg.version_01.item.*;
 
-import static com.example.galgeleg.version_01.Constants.*;
+import static com.example.galgeleg.version_01.utilities.Constants.*;
 
 public class ResultDialog extends AppCompatDialogFragment {
     @Override

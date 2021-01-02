@@ -19,12 +19,8 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import static com.example.galgeleg.version_01.Constants.*;
+import static com.example.galgeleg.version_01.utilities.Constants.*;
 
-// https://stackoverflow.com/questions/4118751/how-do-i-serialize-an-object-and-save-it-to-a-file-in-android
-// https://stackoverflow.com/questions/27409718/java-reading-multiple-objects-from-a-file-as-they-were-in-an-array
-// https://stackoverflow.com/questions/31339075/getting-multiple-objects-from-serialization-in-java
-// https://codinginflow.com/tutorials/android/save-arraylist-to-sharedpreferences-with-gson
 public class ResultActivity extends Activity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -69,7 +65,7 @@ public class ResultActivity extends Activity {
 
 
     private void buildRecyclerView() {
-        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(R.id.recycler_view_for_result);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mAdapter = new ResultAdapter(mResultItemList);

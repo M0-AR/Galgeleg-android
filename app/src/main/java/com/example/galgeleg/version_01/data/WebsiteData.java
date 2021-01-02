@@ -38,10 +38,10 @@ public class WebsiteData extends Word {
 
         System.out.println("data = " + data);
         System.out.println("data = " + Arrays.asList(data.split("\\s+")));
-        muligeOrd.clear();
-        muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
+        listOfWords.clear();
+        listOfWords.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
-        System.out.println("muligeOrd = " + muligeOrd);
+        System.out.println("muligeOrd = " + listOfWords);
     }
 
 }

@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class GalgelogikUnitTest {
-
+/*
     @Test
     public void afprøvMedSkovsnegl() {
         Galgelogik spil = new Galgelogik();
@@ -42,4 +42,6 @@ public class GalgelogikUnitTest {
         spil.hentOrdFraDr();
         assertTrue("Mere end 100 ord fra DR", spil.muligeOrd.size()>100);
     }
+
+ */
 }

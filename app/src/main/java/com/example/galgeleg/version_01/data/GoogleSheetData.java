@@ -28,7 +28,7 @@ public class GoogleSheetData extends Word {
         String data = hentUrl("https://docs.google.com/spreadsheets/d/" + id + "/export?format=csv&id=" + id);
         int linjeNr = 0;
 
-        muligeOrd.clear();
+        listOfWords.clear();
         for (String linje : data.split("\n")) {
             if (linjeNr<20) System.out.println("Læst linje = " + linje); // udskriv de første 20 linjer
             if (linjeNr++ < 1 ) continue; // Spring første linje med kolonnenavnene over
@@ -38,9 +38,9 @@ public class GoogleSheetData extends Word {
             if (sværhedsgrad.isEmpty() || ordet.isEmpty()) continue; // spring over linjer med tomme ord
             if (!sværhedsgrader.contains(sværhedsgrad)) continue; // filtrér på sværhedsgrader
             System.out.println("Tilføjer "+ordet+", der har sværhedsgrad "+sværhedsgrad);
-            muligeOrd.add(ordet);
+            listOfWords.add(ordet);
         }
 
-        System.out.println("muligeOrd = " + muligeOrd);
+        System.out.println("muligeOrd = " + listOfWords);
     }
 }

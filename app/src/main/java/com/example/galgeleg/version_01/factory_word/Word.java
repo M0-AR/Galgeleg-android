@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Word {
-    protected ArrayList<String> muligeOrd = new ArrayList<String>();
+    protected ArrayList<String> listOfWords = new ArrayList<String>();
 
     private String word;
     public String getWord() {
@@ -35,8 +35,8 @@ public abstract class Word {
     }
 
     protected String getRandomWord() {
-        int i = new Random().nextInt(muligeOrd.size());
-        return muligeOrd.get(i);
+        int i = new Random().nextInt(listOfWords.size());
+        return listOfWords.get(i);
     }
 
 }

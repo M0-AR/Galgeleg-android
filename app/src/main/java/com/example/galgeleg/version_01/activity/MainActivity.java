@@ -18,7 +18,7 @@ import com.example.galgeleg.version_01.factory_word.DataFactory;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.galgeleg.version_01.Constants.WORD;
+import static com.example.galgeleg.version_01.utilities.Constants.WORD;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private DataFactory dataFactory;

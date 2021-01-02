@@ -13,9 +13,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Get Word From:"
+        android:text="Play alone or with friends:"
         android:textColor="@color/colorAccent"
-        android:textSize="35sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -39,34 +39,34 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/memory_button"
+            android:id="@+id/play_alone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="64dp"
             android:background="@drawable/button"
-            android:text="Memory Data"
+            android:text="Play alone"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/google_sheet_button"
+            android:id="@+id/play_with_friends"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="64dp"
             android:background="@drawable/button"
-            android:text="Google Sheet Data"
+            android:text="Play with friends"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/website_button"
+            android:id="@+id/friends_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:background="@drawable/button"
-            android:text="DR's Website Data"
+            android:text="Friends' result history"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold" />
