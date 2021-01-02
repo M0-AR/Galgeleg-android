@@ -2,7 +2,7 @@
 
 # Requirement
     1- At least the version should be 24 or lower ----done---- 
-    2- At least 5 layouts in XML (Should be Beautiful)  
+    2- At least 5 layouts in XML (Should be Beautiful) ----done----  
     3- User interaction (Back navigation or re-navigation) 
     4- Network communication with multithreaded programming are used (DR website or online spreadsheet) ----done----
     5- Data should be stored locally (e.g. PreferenceManager) ----done----
@@ -12,7 +12,7 @@
         1- Play a sound, when user won or lost
         2- Show an animation ----done----
         3- Use 3rd party library (e.g. when user won or lost https://android-arsenal.com/details/1/4299, http://airbnb.io/lottie/#/ or https://lottiefiles.com/)
-    9- App's name (values/strings.xml -> <string name="app_name">s123456 Sørens Super Galgeleg</string>)
+    9- App's name (values/strings.xml -> <string name="app_name">s123456 Sørens Super Galgeleg</string>) ----done----
     10- APK-file app/build/outputs/apk/debugapp-debug.apk inside the root of ZIP-file
     11- History of version control
 

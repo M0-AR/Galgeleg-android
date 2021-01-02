@@ -8,6 +8,7 @@ public class ResultItem implements Serializable{
     private String mCorrectLetters;
     private String mWrongLetters;
     private Date date;
+    // TODO: 02/01/2021 make an int for high score and set the default value for 6 then for every wrong letter decrease the value
 
     public ResultItem(String mResultMessage, String mCorrectLetters, String mWrongLetters) {
         this.mResultMessage = mResultMessage;
