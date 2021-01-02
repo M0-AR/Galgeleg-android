@@ -1,9 +1,10 @@
 package com.example.galgeleg;
 
 
+import com.example.galgeleg.version_01.Galgelogik;
+
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

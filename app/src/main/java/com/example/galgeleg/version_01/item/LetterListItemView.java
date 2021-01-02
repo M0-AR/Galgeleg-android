@@ -1,4 +1,4 @@
-package com.example.galgeleg.item;
+package com.example.galgeleg.version_01.item;
 
 import android.content.Context;
 import android.content.res.Resources;

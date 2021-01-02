@@ -1,4 +1,4 @@
-package com.example.galgeleg.activity;
+package com.example.galgeleg.version_01.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,14 +11,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.galgeleg.R;
-import com.example.galgeleg.dialog.SearchWordDialog;
-import com.example.galgeleg.factory_word.Word;
-import com.example.galgeleg.factory_word.DataFactory;
+import com.example.galgeleg.version_01.dialog.SearchWordDialog;
+import com.example.galgeleg.version_01.factory_word.Word;
+import com.example.galgeleg.version_01.factory_word.DataFactory;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.galgeleg.Constants.WORD;
+import static com.example.galgeleg.version_01.Constants.WORD;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private DataFactory dataFactory;

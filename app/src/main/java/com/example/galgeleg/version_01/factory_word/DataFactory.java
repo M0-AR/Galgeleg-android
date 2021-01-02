@@ -1,8 +1,8 @@
-package com.example.galgeleg.factory_word;
+package com.example.galgeleg.version_01.factory_word;
 
-import com.example.galgeleg.data.GoogleSheetData;
-import com.example.galgeleg.data.MemoryData;
-import com.example.galgeleg.data.WebsiteData;
+import com.example.galgeleg.version_01.data.GoogleSheetData;
+import com.example.galgeleg.version_01.data.MemoryData;
+import com.example.galgeleg.version_01.data.WebsiteData;
 
 public class DataFactory {
 

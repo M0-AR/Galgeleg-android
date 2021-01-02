@@ -1,4 +1,4 @@
-package com.example.galgeleg.dialog;
+package com.example.galgeleg.version_01.dialog;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,10 +7,10 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.example.galgeleg.activity.ResultActivity;
-import com.example.galgeleg.item.*;
+import com.example.galgeleg.version_01.activity.ResultActivity;
+import com.example.galgeleg.version_01.item.*;
 
-import static com.example.galgeleg.Constants.*;
+import static com.example.galgeleg.version_01.Constants.*;
 
 public class ResultDialog extends AppCompatDialogFragment {
     @Override

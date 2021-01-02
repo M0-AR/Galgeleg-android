@@ -1,4 +1,4 @@
-package com.example.galgeleg.activity;
+package com.example.galgeleg.version_01.activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -12,15 +12,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.galgeleg.Galgelogik;
+import com.example.galgeleg.version_01.Galgelogik;
 import com.example.galgeleg.R;
-import com.example.galgeleg.dialog.ResultDialog;
-import com.example.galgeleg.item.*;
+import com.example.galgeleg.version_01.dialog.ResultDialog;
+import com.example.galgeleg.version_01.item.*;
 
 import java.util.Date;
 
-import static com.example.galgeleg.Constants.OBJECT;
-import static com.example.galgeleg.Constants.WORD;
+import static com.example.galgeleg.version_01.Constants.OBJECT;
+import static com.example.galgeleg.version_01.Constants.WORD;
 
 //ImageView
 // https://stackoverflow.com/questions/8051069/how-to-show-image-using-imageview-in-android

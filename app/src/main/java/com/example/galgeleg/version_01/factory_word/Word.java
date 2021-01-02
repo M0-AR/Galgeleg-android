@@ -1,7 +1,4 @@
-package com.example.galgeleg.factory_word;
-
-import android.os.Handler;
-import android.os.Looper;
+package com.example.galgeleg.version_01.factory_word;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,8 +6,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 public abstract class Word {
     protected ArrayList<String> muligeOrd = new ArrayList<String>();

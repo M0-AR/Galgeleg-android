@@ -1,4 +1,4 @@
-package com.example.galgeleg.activity;
+package com.example.galgeleg.version_01.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galgeleg.R;
-import com.example.galgeleg.item.*;
-import com.example.galgeleg.adapter.*;
+import com.example.galgeleg.version_01.item.*;
+import com.example.galgeleg.version_01.adapter.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -19,7 +19,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import static com.example.galgeleg.Constants.*;
+import static com.example.galgeleg.version_01.Constants.*;
 
 // https://stackoverflow.com/questions/4118751/how-do-i-serialize-an-object-and-save-it-to-a-file-in-android
 // https://stackoverflow.com/questions/27409718/java-reading-multiple-objects-from-a-file-as-they-were-in-an-array

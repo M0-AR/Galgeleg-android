@@ -1,4 +1,4 @@
-package com.example.galgeleg;
+package com.example.galgeleg.version_01;
 
 public class Constants {
     public static final String RESULT_TEXT = "com.example.galgeleg.resultMassage";

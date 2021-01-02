@@ -1,6 +1,6 @@
 package test.galgeleg;
 
-import com.example.galgeleg.Galgelogik;
+import com.example.galgeleg.version_01.Galgelogik;
 
 import org.junit.Test;
 

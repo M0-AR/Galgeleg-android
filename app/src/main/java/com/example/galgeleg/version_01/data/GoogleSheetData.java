@@ -1,6 +1,6 @@
-package com.example.galgeleg.data;
+package com.example.galgeleg.version_01.data;
 
-import com.example.galgeleg.factory_word.Word;
+import com.example.galgeleg.version_01.factory_word.Word;
 
 public class GoogleSheetData extends Word {
 

@@ -1,4 +1,4 @@
-package com.example.galgeleg.adapter;
+package com.example.galgeleg.version_01.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galgeleg.R;
-import com.example.galgeleg.item.ResultItem;
+import com.example.galgeleg.version_01.item.ResultItem;
 
 import java.util.ArrayList;
 

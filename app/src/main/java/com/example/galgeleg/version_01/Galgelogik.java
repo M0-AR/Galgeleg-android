@@ -1,10 +1,10 @@
-package com.example.galgeleg;
+package com.example.galgeleg.version_01;
 
-import com.example.galgeleg.activity.*;
-import com.example.galgeleg.state_player.ActionState;
-import com.example.galgeleg.state_player.DeathState;
-import com.example.galgeleg.state_player.PlayerState;
-import com.example.galgeleg.state_player.SurvivalState;
+import com.example.galgeleg.version_01.activity.*;
+import com.example.galgeleg.version_01.state_player.ActionState;
+import com.example.galgeleg.version_01.state_player.DeathState;
+import com.example.galgeleg.version_01.state_player.PlayerState;
+import com.example.galgeleg.version_01.state_player.SurvivalState;
 
 import java.util.ArrayList;
 import java.util.HashSet;
