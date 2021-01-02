@@ -82,8 +82,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
         Bundle bundle =  getIntent().getExtras();
          String word =  bundle.get(WORD)+"";
 
-
-        spil.startNytSpil(word);
+         //spil.startNytSpil(word);
 
         mGridView = findViewById(R.id.gridView);
 
