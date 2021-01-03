@@ -28,3 +28,6 @@ https://stackoverflow.com/questions/31990703/how-do-i-get-an-edittext-input-into
 // https://stackoverflow.com/questions/31339075/getting-multiple-objects-from-serialization-in-java
 // https://codinginflow.com/tutorials/android/save-arraylist-to-sharedpreferences-with-gson
 https://developer.android.com/guide/topics/ui/layout/recyclerview
+http://freesoundeffect.net/tags/game
+https://www.freesoundeffects.com/free-sounds/applause-10033/
+https://stackoverflow.com/questions/18459122/play-sound-on-button-click-android

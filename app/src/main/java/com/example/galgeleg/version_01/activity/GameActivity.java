@@ -2,6 +2,7 @@ package com.example.galgeleg.version_01.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,6 +28,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     private GridView mGridView;
     private ImageView mImageView;
     private String mPlayerName;
+    private MediaPlayer mMediaPlayer;
 
     //Galgelogik spil = new Galgelogik(this);
 
@@ -40,14 +42,15 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
             "y", "z", "æ", "ø", "å"
     };
 
-    final int[] images = {R.drawable.forkert1,
+    final int[] images = {R.drawable.galge,
+                          R.drawable.forkert1,
                           R.drawable.forkert2,
                           R.drawable.forkert3,
                           R.drawable.forkert4,
                           R.drawable.forkert5,
                           R.drawable.forkert6};
 
-    int imageTrackingIndex = -1;
+    int imageTrackingIndex = 0;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -74,41 +77,50 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String getLetter = ((TextView) view).getText()+"";
         spil.gætBogstav(getLetter);
+
         if (spil.erSidsteBogstavKorrekt()) {
             Toast.makeText(getApplicationContext(),
                     getLetter + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
             spil.mCorrectLettersTheUserUsed.add(getLetter);
         } else {
-            if (imageTrackingIndex == images.length-1) {
-                spil.erSpilletVundet();
-                spil.erSpilletTabt();
-            } else {
-                mImageView.setImageResource(images[++imageTrackingIndex]);
-            }
             Toast.makeText(getApplicationContext(),
                     getLetter + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
             spil.mWrongLettersTheUserUsed.add(getLetter);
+            mImageView.setImageResource(images[imageTrackingIndex++]);
         }
-    }
 
+        spil.erSpilletVundet();
+        spil.erSpilletTabt();
+    }
 
     @SuppressLint("NewApi")
     public void survive() {
+        playWinningSound();
         String mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
         startResultActivity(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
                  "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
     }
 
+    private void playWinningSound() {
+        mMediaPlayer = MediaPlayer.create(this, R.raw.clap_sound);
+        mMediaPlayer.start();
+    }
+
 
     @SuppressLint("NewApi")
     public void dead() {
-       String mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
+        playDeadSound();
+        String mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
         startResultActivity(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
                 "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
     }
 
+    private void playDeadSound() {
+        mMediaPlayer = MediaPlayer.create(this, R.raw.knif_sound);
+        mMediaPlayer.start();
+    }
     public void startResultActivity(ResultItem resultItem) {
         Intent intent = new Intent(GameActivity.this, ResultActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
