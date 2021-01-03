@@ -14,10 +14,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".version_01.activity.WordFromList"></activity>
+        <activity android:name=".version_01.activity.WordFromList" />
         <activity android:name=".version_01.activity.FriendActivity" />
         <activity android:name=".version_01.activity.AloneActivity" />
         <activity android:name=".version_01.activity.GameActivity" /> <!-- android:theme="@style/AppTheme" -->
+        <activity android:name=".version_01.activity.ResultActivity" />
         <activity android:name=".version_01.activity.AloneOrWithFriends">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".version_01.activity.ResultActivity" />
     </application>
 
 </manifest>

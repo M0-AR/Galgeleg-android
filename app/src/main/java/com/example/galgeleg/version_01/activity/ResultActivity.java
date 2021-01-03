@@ -40,11 +40,14 @@ public class ResultActivity extends Activity {
         loadData();
 
         Bundle bundle =  getIntent().getExtras();
-        final ResultItem resultItem = (ResultItem) bundle.getSerializable(OBJECT);
-        if (resultItem != null) {
-            openDialog(resultItem);
+        ResultItem resultItem;
+        if (bundle != null) {
+            resultItem = (ResultItem) bundle.getSerializable(OBJECT);
+            if (resultItem != null) {
+                openDialog(resultItem);
+                mResultItemList.add(resultItem);
+            }
         }
-        mResultItemList.add(resultItem);
 
         buildRecyclerView();
         saveData();
@@ -61,15 +64,6 @@ public class ResultActivity extends Activity {
             builder.show();
         }
     }
-
-    private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(mResultItemList);
-        editor.putString("task list", json);
-        editor.apply();
-    }
     private void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
@@ -80,8 +74,6 @@ public class ResultActivity extends Activity {
             mResultItemList = new ArrayList<>();
         }
     }
-
-
     private void buildRecyclerView() {
         mRecyclerView = findViewById(R.id.recycler_view_for_result);
         mRecyclerView.setHasFixedSize(true);
@@ -89,6 +81,14 @@ public class ResultActivity extends Activity {
         mAdapter = new ResultAdapter(mResultItemList);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+    }
+    private void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(mResultItemList);
+        editor.putString("task list", json);
+        editor.apply();
     }
 
     @Override

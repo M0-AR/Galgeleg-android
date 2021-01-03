@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.galgeleg.R;
 
+import javax.xml.transform.Result;
+
 public class AloneOrWithFriends extends AppCompatActivity implements View.OnClickListener{
 
     @Override
@@ -44,7 +46,8 @@ public class AloneOrWithFriends extends AppCompatActivity implements View.OnClic
             }break;
             case R.id.friends_history:
             {
-
+                Intent intent = new Intent(this, ResultActivity.class);
+                startActivity(intent);
             }break;
         }
     }

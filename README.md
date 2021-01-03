@@ -6,11 +6,11 @@
     3- User interaction (Back navigation or re-navigation) ----done---- 
     4- Network communication with multithreaded programming are used (DR website or online spreadsheet) ----done----
     5- Data should be stored locally (e.g. PreferenceManager) ----done----
-    6- List to show high score. The list could have score, word and date. (Use class object (Name: Result))
+    6- A list to show high score. The list could have score, word and date. (Use class object (Name: Result))
     7- Choose the words from a list ----done----  
-    8- Motivation for user. Choose 2 from 3:  
-        1- Play a sound, when user won or lost 
-        2- Show an animation ----done----
+    8- Motivation for user. Choose 2 from 3: ----done---- 
+        1- Play a sound, when user won or lost ----done---- 
+        2- Show an animation
         3- Use 3rd party library (e.g. when user won or lost https://android-arsenal.com/details/1/4299, http://airbnb.io/lottie/#/ or https://lottiefiles.com/) ----done----
     9- App's name (values/strings.xml -> <string name="app_name">s123456 Sørens Super Galgeleg</string>) ----done----
     10- APK-file app/build/outputs/apk/debugapp-debug.apk inside the root of ZIP-file
