@@ -38,6 +38,9 @@ public class WordFromList extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+
+
+
     @Override
     public void onBackPressed() {
         //moveTaskToBack(true); // exist app

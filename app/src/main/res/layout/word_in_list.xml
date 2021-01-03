@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="256dp"
+    android:id="@+id/parent"
+    android:layout_width="192dp"
     android:layout_height="64dp"
+    android:layout_margin="10dp"
+    android:elevation="5dp"
+    android:orientation="vertical"
     tools:context=".version_01.activity.WordFromList">
 
     <TextView
         android:id="@+id/word_in_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginEnd="16dp"
+        android:paddingTop="16dp"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>
