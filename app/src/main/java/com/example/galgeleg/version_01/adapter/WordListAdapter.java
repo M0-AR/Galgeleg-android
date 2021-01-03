@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -15,10 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galgeleg.R;
 import com.example.galgeleg.version_01.activity.GameActivity;
-import com.example.galgeleg.version_01.factory_word.Word;
-import com.example.galgeleg.version_01.item.ResultItem;
-
-import java.util.ArrayList;
 
 import static com.example.galgeleg.version_01.utilities.Constants.WORD;
 

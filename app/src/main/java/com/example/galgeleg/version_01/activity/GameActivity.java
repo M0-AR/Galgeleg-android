@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.galgeleg.version_01.Galgelogik;
 import com.example.galgeleg.R;
-import com.example.galgeleg.version_01.item.*;
+import com.example.galgeleg.version_01.model.*;
 
 import java.util.Date;
 
@@ -29,6 +30,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     private ImageView mImageView;
     private String mPlayerName;
     private MediaPlayer mMediaPlayer;
+    private TextView mWordLength, mNumberOfTrial, mCorrectLetter, mWrongLetter;
 
     //Galgelogik spil = new Galgelogik(this);
 
@@ -50,15 +52,22 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
                           R.drawable.forkert5,
                           R.drawable.forkert6};
 
-    int imageTrackingIndex = 0;
+    int imageTrackingIndex = -1;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        mWordLength = findViewById(R.id.word_length);
+        mNumberOfTrial = findViewById(R.id.number_of_trial);
+        mCorrectLetter = findViewById(R.id.correct_letter);
+        mWrongLetter = findViewById(R.id.wrong_letter);
+
         Bundle bundle =  getIntent().getExtras();
         String word =  bundle.get(WORD)+"";
+        mWordLength.setText("The number of letters is: " + word.length());
         mPlayerName = bundle.get(PLAYER_NAME)+"";
 
         spil.startNytSpil(word);
@@ -73,24 +82,28 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String getLetter = ((TextView) view).getText()+"";
         spil.gætBogstav(getLetter);
 
+        mNumberOfTrial.setText(getString(R.string.win_message) + ": " + spil.getAntalForsøg());
         if (spil.erSidsteBogstavKorrekt()) {
             Toast.makeText(getApplicationContext(),
                     getLetter + " " + getString(R.string.correct_letter), Toast.LENGTH_SHORT).show();
             spil.mCorrectLettersTheUserUsed.add(getLetter);
+            mCorrectLetter.setText("Correct letter: " + spil.mCorrectLettersTheUserUsed);
+            spil.erSpilletVundet();
+
         } else {
             Toast.makeText(getApplicationContext(),
                     getLetter + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
             spil.mWrongLettersTheUserUsed.add(getLetter);
-            mImageView.setImageResource(images[imageTrackingIndex++]);
+            mWrongLetter.setText("Wrong letter: " + spil.mWrongLettersTheUserUsed);
+            spil.erSpilletTabt();
+            mImageView.setImageResource(images[++imageTrackingIndex]);
         }
-
-        spil.erSpilletVundet();
-        spil.erSpilletTabt();
     }
 
     @SuppressLint("NewApi")

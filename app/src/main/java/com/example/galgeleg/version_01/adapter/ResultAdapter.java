@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galgeleg.R;
-import com.example.galgeleg.version_01.item.ResultItem;
+import com.example.galgeleg.version_01.model.ResultItem;
 
 import java.util.ArrayList;
 

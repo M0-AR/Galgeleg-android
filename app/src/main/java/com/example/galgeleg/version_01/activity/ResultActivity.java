@@ -3,7 +3,6 @@ package com.example.galgeleg.version_01.activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.galgeleg.R;
-import com.example.galgeleg.version_01.item.*;
+import com.example.galgeleg.version_01.model.*;
 import com.example.galgeleg.version_01.adapter.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -21,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.example.galgeleg.version_01.utilities.Constants.*;
 
@@ -37,6 +37,7 @@ public class ResultActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result_item);
 
+        // getSharedPreferences("shared preferences", MODE_PRIVATE).edit().clear().apply(); //remove all your prefs
         loadData();
 
         Bundle bundle =  getIntent().getExtras();
@@ -72,6 +73,8 @@ public class ResultActivity extends Activity {
         mResultItemList = gson.fromJson(json, type);
         if (mResultItemList == null) {
             mResultItemList = new ArrayList<>();
+            // TODO: 03/01/2021 Try to delete this result
+            mResultItemList.add(new ResultItem("Please Start Play to show your amazing score history\n","","", new Date()));
         }
     }
     private void buildRecyclerView() {

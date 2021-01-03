@@ -7,6 +7,7 @@
     4- Network communication with multithreaded programming are used (DR website or online spreadsheet) ----done----
     5- Data should be stored locally (e.g. PreferenceManager) ----done----
     6- A list to show high score. The list could have score, word and date. (Use class object (Name: Result))
+        * not sure about 6 requirement 
     7- Choose the words from a list ----done----  
     8- Motivation for user. Choose 2 from 3: ----done---- 
         1- Play a sound, when user won or lost ----done---- 
