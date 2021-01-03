@@ -102,7 +102,9 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
             spil.mWrongLettersTheUserUsed.add(getLetter);
             mWrongLetter.setText("Wrong letter: " + spil.mWrongLettersTheUserUsed);
             spil.erSpilletTabt();
+            if (imageTrackingIndex == 6) imageTrackingIndex = 0;
             mImageView.setImageResource(images[++imageTrackingIndex]);
+
         }
     }
 

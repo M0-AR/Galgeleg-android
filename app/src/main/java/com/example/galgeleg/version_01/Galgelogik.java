@@ -13,8 +13,8 @@ public class Galgelogik {
     private static Galgelogik instance;
     private PlayerState currentPlayerState;
     public static GameActivity ui;
-    public HashSet<String> mCorrectLettersTheUserUsed = new HashSet<>();
-    public HashSet<String> mWrongLettersTheUserUsed = new HashSet<>();
+    public HashSet<String> mCorrectLettersTheUserUsed;
+    public HashSet<String> mWrongLettersTheUserUsed;
 
 
     /** AHT afprøvning er muligeOrd synlig på pakkeniveau */
@@ -83,6 +83,9 @@ public class Galgelogik {
         setState(new ActionState());
         brugteBogstaver.clear();
         antalForkerteBogstaver = 0;
+        antalForsøg = 0;
+        mCorrectLettersTheUserUsed = new HashSet<>();
+        mWrongLettersTheUserUsed = new HashSet<>();
         spilletErVundet = false;
         spilletErTabt = false;
         ordet = word;
