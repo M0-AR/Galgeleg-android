@@ -15,8 +15,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity android:name=".version_01.activity.WordFromList"></activity>
-        <activity android:name=".version_01.activity.PlayerInformation" />
-        <activity android:name=".version_01.activity.MainActivity" />
+        <activity android:name=".version_01.activity.FriendActivity" />
+        <activity android:name=".version_01.activity.AloneActivity" />
         <activity android:name=".version_01.activity.GameActivity" /> <!-- android:theme="@style/AppTheme" -->
         <activity android:name=".version_01.activity.AloneOrWithFriends">
             <intent-filter>

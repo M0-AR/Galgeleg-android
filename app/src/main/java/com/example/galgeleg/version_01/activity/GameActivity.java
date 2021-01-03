@@ -1,6 +1,7 @@
 package com.example.galgeleg.version_01.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.galgeleg.version_01.Galgelogik;
 import com.example.galgeleg.R;
-import com.example.galgeleg.version_01.dialog.ResultDialog;
 import com.example.galgeleg.version_01.item.*;
 
 import java.util.Date;
@@ -95,7 +95,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     @SuppressLint("NewApi")
     public void survive() {
         String mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
-        openDialog(new ResultItem(mResultDescription,
+        startResultActivity(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
                  "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
     }
@@ -104,17 +104,25 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     @SuppressLint("NewApi")
     public void dead() {
        String mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
-        openDialog(new ResultItem(mResultDescription,
+        startResultActivity(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
                 "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
     }
 
-    public void openDialog(ResultItem resultItem) {
-        ResultDialog resultDialog = new ResultDialog();
+    public void startResultActivity(ResultItem resultItem) {
+        Intent intent = new Intent(GameActivity.this, ResultActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Bundle bundle = new Bundle();
         bundle.putSerializable(OBJECT, resultItem);
-        resultDialog.setArguments(bundle);
-        resultDialog.show(getSupportFragmentManager(), "example dialog");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, AloneOrWithFriends.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }
 

@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
 
 import static com.example.galgeleg.version_01.utilities.Constants.WORD;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class AloneActivity extends AppCompatActivity implements View.OnClickListener {
     private DataFactory dataFactory;
     private Word word;
 

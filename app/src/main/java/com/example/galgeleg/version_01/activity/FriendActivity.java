@@ -13,7 +13,7 @@ import com.example.galgeleg.version_01.factory_word.Word;
 
 import static com.example.galgeleg.version_01.utilities.Constants.PLAYER_NAME;
 
-public class PlayerInformation extends AppCompatActivity {
+public class FriendActivity extends AppCompatActivity {
     public static final String TAG = "PlayerInformation";
     private String mPlayerName;
     @Override

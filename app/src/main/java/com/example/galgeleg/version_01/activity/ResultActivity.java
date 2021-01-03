@@ -3,9 +3,12 @@ package com.example.galgeleg.version_01.activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,10 +41,25 @@ public class ResultActivity extends Activity {
 
         Bundle bundle =  getIntent().getExtras();
         final ResultItem resultItem = (ResultItem) bundle.getSerializable(OBJECT);
+        if (resultItem != null) {
+            openDialog(resultItem);
+        }
         mResultItemList.add(resultItem);
 
         buildRecyclerView();
         saveData();
+    }
+
+    public void openDialog(ResultItem resultItem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Galgeleg")
+                .setMessage(resultItem.getResultMessage())
+                .setCancelable(false)
+                .setPositiveButton("ok", (dialogInterface, i) -> {
+                });
+        if (!isFinishing()) {
+            builder.show();
+        }
     }
 
     private void saveData() {
@@ -75,8 +93,9 @@ public class ResultActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        //moveTaskToBack(true); // exist app
-        finish();
+        Intent intent = new Intent(this, AloneOrWithFriends.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
 
