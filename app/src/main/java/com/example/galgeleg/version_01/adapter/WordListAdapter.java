@@ -21,6 +21,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
     private static final String TAG = "WordListAdapter";
     private String[] mWordList;
     private Context context;
+    private GetWord getWord;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mTextView;
@@ -35,9 +36,10 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
         }
     }
 
-    public WordListAdapter(String[] mWordList, Context context) {
+    public WordListAdapter(String[] mWordList, Context context, GetWord getWord) {
         this.mWordList = mWordList;
         this.context = context;
+        this.getWord = getWord;
     }
 
     @NonNull
@@ -55,10 +57,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, GameActivity.class);
-                intent.putExtra(WORD, mWordList[position]);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                context.startActivities(new Intent[]{intent});
+                getWord.onGettingWord(mWordList[position]);
             }
         });
     }
@@ -69,8 +68,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
         return mWordList.length;
     }
 
-    interface GetWord {
-        void OnGettingWord(String word);
+    public interface GetWord {
+        void onGettingWord(String word);
     }
 
 }

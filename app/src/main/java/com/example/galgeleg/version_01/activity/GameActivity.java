@@ -69,6 +69,9 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
         String word =  bundle.get(WORD)+"";
         mWordLength.setText("The number of letters is: " + word.length());
         mPlayerName = bundle.get(PLAYER_NAME)+"";
+        if (mPlayerName.equals("")) {
+            mPlayerName = "Me";
+        }
 
         spil.startNytSpil(word);
         mGridView = findViewById(R.id.gridView);
@@ -111,7 +114,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     @SuppressLint("NewApi")
     public void survive() {
         playWinningSound();
-        String mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
+        String mResultDescription = "Player name: " + mPlayerName +  "\nYou wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
         startResultActivity(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
                  "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
@@ -126,7 +129,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     @SuppressLint("NewApi")
     public void dead() {
         playDeadSound();
-        String mResultDescription = getString(R.string.lose_message) + " " + spil.getOrdet();
+        String mResultDescription = "Player name: " + mPlayerName +  "\n" +  getString(R.string.lose_message) + " " + spil.getOrdet();
         startResultActivity(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
                 "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
