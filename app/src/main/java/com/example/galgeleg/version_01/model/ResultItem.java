@@ -8,23 +8,14 @@ public class ResultItem implements Serializable{
     private String mCorrectLetters;
     private String mWrongLetters;
     private Date date;
-    private int score;
-    // TODO: 02/01/2021 make an int for high score and set the default value for 6 then for every wrong letter decrease the value
+    private String playerName;
 
-
-    public ResultItem(String mResultMessage, String mCorrectLetters, String mWrongLetters, Date date, int score) {
+    public ResultItem(String mResultMessage, String mCorrectLetters, String mWrongLetters, Date date, String playerName) {
         this.mResultMessage = mResultMessage;
         this.mCorrectLetters = mCorrectLetters;
         this.mWrongLetters = mWrongLetters;
         this.date = date;
-        this.score = score;
-    }
-
-    public ResultItem(String mResultMessage, String mCorrectLetters, String mWrongLetters, Date date) {
-        this.mResultMessage = mResultMessage;
-        this.mCorrectLetters = mCorrectLetters;
-        this.mWrongLetters = mWrongLetters;
-        this.date = date;
+        this.playerName = playerName;
     }
 
     public String getResultMessage() {
@@ -41,5 +32,9 @@ public class ResultItem implements Serializable{
 
     public Date getDate() {
         return date;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 }

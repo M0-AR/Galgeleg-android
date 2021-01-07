@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +27,7 @@ import static com.example.galgeleg.version_01.utilities.Constants.PLAYER_NAME;
 import static com.example.galgeleg.version_01.utilities.Constants.WORD;
 
 public class GameActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    public static final String TAG = "GameActivity";
     private GridView mGridView;
     private ImageView mImageView;
     private String mPlayerName;
@@ -66,14 +68,18 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
         mWrongLetter = findViewById(R.id.wrong_letter);
 
         Bundle bundle =  getIntent().getExtras();
-        String word =  bundle.get(WORD)+"";
-        mWordLength.setText("The number of letters is: " + word.length());
-        mPlayerName = bundle.get(PLAYER_NAME)+"";
-        if (mPlayerName.equals("")) {
+//        mPlayerName = (bundle.get(PLAYER_NAME) != null ? bundle.get(PLAYER_NAME) : "Me") +"";
+        mPlayerName = bundle.get(PLAYER_NAME) + "";
+        if (mPlayerName.equals("null")) {
             mPlayerName = "Me";
         }
+        Log.d(TAG, "playerName: " + mPlayerName);
 
-        spil.startNytSpil(word);
+        String word =  bundle.get(WORD)+"";
+        mWordLength.setText("The number of letters is: " + word.length());
+
+
+        spil.startNytSpil(mPlayerName, word);
         mGridView = findViewById(R.id.gridView);
 
         int resID = R.layout.letterlist_item;
@@ -99,7 +105,7 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
             mCorrectLetter.setText("Correct letter: " + spil.mCorrectLettersTheUserUsed);
             spil.erSpilletVundet();
 
-        } else {
+        } else if (!spil.mWrongLettersTheUserUsed.contains(getLetter)){
             Toast.makeText(getApplicationContext(),
                     getLetter + " " + getString(R.string.wrong_letter), Toast.LENGTH_SHORT).show();
             spil.mWrongLettersTheUserUsed.add(getLetter);
@@ -107,17 +113,16 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
             spil.erSpilletTabt();
             if (imageTrackingIndex == 6) imageTrackingIndex = 0;
             mImageView.setImageResource(images[++imageTrackingIndex]);
-
         }
     }
 
     @SuppressLint("NewApi")
     public void survive() {
         playWinningSound();
-        String mResultDescription = "Player name: " + mPlayerName +  "\nYou wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg();
+        String mResultDescription = "You wonnnnnn\n" +  getString(R.string.win_message) + " " + spil.getAntalForsøg() + " and the word was: " + spil.getOrdet();
         startResultActivity(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
-                 "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
+                 "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date(), "Player name: " + spil.getPlayerName()));
     }
 
     private void playWinningSound() {
@@ -129,10 +134,10 @@ public class GameActivity extends AppCompatActivity implements AdapterView.OnIte
     @SuppressLint("NewApi")
     public void dead() {
         playDeadSound();
-        String mResultDescription = "Player name: " + mPlayerName +  "\n" +  getString(R.string.lose_message) + " " + spil.getOrdet();
+        String mResultDescription =  getString(R.string.lose_message) + " " + spil.getOrdet() + " and number of trials: " + spil.getAntalForsøg();
         startResultActivity(new ResultItem(mResultDescription,
                 "Correct Letters: " + String.join(" ",spil.mCorrectLettersTheUserUsed),
-                "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date()));
+                "Wrong letters: " + String.join(" ", spil.mWrongLettersTheUserUsed), new Date(),"Player name: " + spil.getPlayerName()));
     }
 
     private void playDeadSound() {

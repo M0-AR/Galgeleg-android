@@ -73,8 +73,7 @@ public class ResultActivity extends Activity {
         mResultItemList = gson.fromJson(json, type);
         if (mResultItemList == null) {
             mResultItemList = new ArrayList<>();
-            // TODO: 03/01/2021 Try to delete this result
-            mResultItemList.add(new ResultItem("Please Start Play to show your amazing score history\n","","", new Date()));
+            mResultItemList.add(new ResultItem("Please Start Play to show your amazing score history\n","","", new Date(),""));
         }
     }
     private void buildRecyclerView() {

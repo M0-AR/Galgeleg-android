@@ -7,19 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.galgeleg.R;
 import com.example.galgeleg.version_01.adapter.*;
 import com.example.galgeleg.version_01.utilities.SampleData;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 import static com.example.galgeleg.version_01.utilities.Constants.PLAYER_NAME;
 import static com.example.galgeleg.version_01.utilities.Constants.WORD;
 
 public class WordFromList extends AppCompatActivity implements WordListAdapter.GetWord{
+    public static final String TAG = "WordFromList";
 
     String mPlayerName;
 
@@ -29,6 +29,7 @@ public class WordFromList extends AppCompatActivity implements WordListAdapter.G
         setContentView(R.layout.activity_word_from_list);
         Bundle bundle =  getIntent().getExtras();
         mPlayerName =  bundle.get(PLAYER_NAME)+"";
+        Log.d(TAG, "playerName: " + mPlayerName);
         buildRecyclerView();
     }
 

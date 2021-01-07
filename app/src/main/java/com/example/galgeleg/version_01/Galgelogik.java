@@ -27,10 +27,15 @@ public class Galgelogik {
     private boolean spilletErVundet;
     private boolean spilletErTabt;
     private int antalForsøg;
+    private String playerName;
 
     public static Galgelogik getInstance(GameActivity gameActivity) {
         if (instance == null) instance = new Galgelogik(gameActivity);
         return instance;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 
     public int getAntalForsøg() {
@@ -79,8 +84,9 @@ public class Galgelogik {
     }
 
 
-    public void startNytSpil(String word) {
+    public void startNytSpil(String playerName, String word) {
         setState(new ActionState());
+        this.playerName = playerName;
         brugteBogstaver.clear();
         antalForkerteBogstaver = 0;
         antalForsøg = 0;
