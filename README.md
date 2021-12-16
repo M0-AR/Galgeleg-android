@@ -4,6 +4,11 @@
 
 ## The game ![](galgeleg.JPG)
 
+## The final Output:
+<p align="center">
+  <img src="https://github.com/M0-AR/Galgeleg_android/blob/main/galgeleg.JPG" width="400" height="700">
+</p>
+
 # Requirement
     1- At least the version should be 24 or lower ----done---- 
     2- At least 5 layouts in XML (Should be Beautiful) ----done----  
