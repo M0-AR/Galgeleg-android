@@ -1,6 +1,8 @@
 # Galgeleg_android
 
-## Design Pattern that used to build this app ![](class diagram.png)
+## Design Pattern that used to build this app ![](class-diagram.png)
+
+## The game ![](galgeleg.JPG)
 
 # Requirement
     1- At least the version should be 24 or lower ----done---- 
