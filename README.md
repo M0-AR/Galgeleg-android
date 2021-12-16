@@ -2,9 +2,7 @@
 
 ## Design Pattern that used to build this app ![](class-diagram.png)
 
-## The game ![](galgeleg.JPG)
-
-## The final Output:
+## The Galgeleg Game:
 <p align="center">
   <img src="https://github.com/M0-AR/Galgeleg_android/blob/main/galgeleg.JPG" width="400" height="700">
 </p>
